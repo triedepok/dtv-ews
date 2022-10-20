@@ -1,0 +1,17 @@
+             DEWS SERVER GENERATE
+
+1. Use EWS Server without installation
+     EWS Server can be used without installation. 
+     Open terminal, switch to this folder 
+     and type ./dews or just double click
+     on it. (You may have to make it 
+     executable by typing chmod +x dews
+
+2. Install EWS Server
+     Open terminal and switch to the folder
+     Type sudo ./install to start installation
+     If you are using Fedora, Red Hat, Oracle
+     or similar Linux use su -c ./install
+     After installation start EWS Server from 
+     application menu or by typing EWS Server in
+     terminal.

@@ -1,0 +1,62 @@
+#!/bin/bash
+
+if [[ $EUID -ne 0 ]]; then
+    echo "This script should be executed as root user"
+    exit 1
+fi
+
+echo "############################################################"
+echo "############### Welcome to EWS Server Setup ################"
+echo "################## triedepok@gmail.com #####################"
+echo "############################################################"
+
+echo ""
+
+echo "Checking Java Runtime environment..."
+echo ""
+java -version
+if [ $? -eq 0 ]; then
+	echo ""
+	echo "Java Runtime is available."
+	echo ""
+else
+	echo ""
+	echo "Java is not installed"
+	echo "Please install Java first then run this setup again."
+	echo 'If you are using Ubuntu, Mint, Debian etc. sudo apt-get install openjdk-7-jre'
+	echo 'Fedora, Red Hat etc. su -c "yum install java-1.7.0-openjdk"'
+	exit 1
+fi
+
+echo "Copying files. Please wait..."
+echo ""
+
+mkdir -p /usr/local/ews/
+
+cp -f dews /usr/local/ews/
+
+chmod 0777 /usr/local/ews/dews
+
+cp -f icon.png /usr/local/ews/
+
+cp -f ewsplay /usr/local/bin/
+
+chmod 0777 /usr/local/bin/ewsplay
+
+echo "[Desktop Entry]" > ~/.config/autostart/dews.desktop 
+echo "Name=Software EWS Server" >> ~/.config/autostart/dews.desktop 
+echo "Comment=EWS Server Generate" >> ~/.config/autostart/dews.desktop 
+echo "Exec=ewsplay start" >> ~/.config/autostart/dews.desktop 
+echo "Icon=/usr/local/ews/icon.png" >> ~/.config/autostart/dews.desktop 
+echo "Terminal=true" >> ~/.config/autostart/dews.desktop 
+echo "X-MultipleArgs=false" >> ~/.config/autostart/dews.desktop 
+echo "Type=Application" >> ~/.config/autostart/dews.desktop 
+echo "NoDisplay=false" >> ~/.config/autostart/dews.desktop 
+echo "Categories=Programming" >> ~/.config/autostart/dews.desktop 
+echo "X-GNOME-Autostart-enabled=true" >> ~/.config/autostart/dews.desktop 
+echo "Name[en_IN]=Software EWS Server Generate" >> ~/.config/autostart/dews.desktop 
+	
+chmod 0777 ~/.config/autostart/dews.desktop 
+
+echo "Installation complete."
+echo "You can start EWS Server from Start Menu or by typing ewsplay in terminal."

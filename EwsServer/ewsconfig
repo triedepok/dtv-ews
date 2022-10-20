@@ -1,0 +1,8 @@
+#!/bin/bash
+#
+# Start untuk program configurasi dan create SN EWS
+#
+# Create Tri Miyarno
+#########################################################################
+
+java -jar /usr/local/lib/dewsconfig &

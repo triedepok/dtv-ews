@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [[ $EUID -ne 0 ]]; then
+    echo "This script should be executed as root user"
+    exit 1
+fi
+
+rm -f -r /usr/local/ews/
+
+rm -f /usr/local/bin/ewsplay
+
+rm -f ~/.config/autostart/dews.desktop
+
+echo "EWS Server has been successfully removed from Your computer"
